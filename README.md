@@ -1,1 +1,1 @@
-# FOGOTY..github.io
+# FOGOTY.github.io

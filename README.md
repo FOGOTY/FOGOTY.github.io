@@ -67,13 +67,14 @@
             background: rgba(45, 55, 72, 0.95);
             backdrop-filter: blur(25px);
             border-radius: 25px;
-            padding: 40px;
+            padding: 50px;
             box-shadow: 
                 0 25px 50px rgba(0, 0, 0, 0.3),
                 0 0 0 1px rgba(255, 255, 255, 0.1),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            max-width: 600px;
-            width: 90%;
+            max-width: 900px;
+            width: 95%;
+            min-height: 80vh;
             text-align: center;
             position: relative;
             z-index: 1;
@@ -94,7 +95,7 @@
         }
 
         .title {
-            font-size: 3rem;
+            font-size: 4rem;
             font-weight: 900;
             background: linear-gradient(135deg, #4ade80, #3b82f6, #8b5cf6);
             background-size: 200% 200%;
@@ -102,7 +103,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             text-shadow: 0 0 30px rgba(74, 222, 128, 0.3);
             filter: drop-shadow(0 0 10px rgba(74, 222, 128, 0.2));
         }
@@ -660,7 +661,6 @@
                 }, 2000);
             });
         }
-
 
         function initRippleEffect() {
             document.querySelectorAll('.btn').forEach(btn => {

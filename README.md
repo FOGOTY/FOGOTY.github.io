@@ -712,5 +712,33 @@
         updateTimer();
         setInterval(updateTimer, 1000);
     </script>
+    <script>
+  document.addEventListener('contextmenu', event => event.preventDefault());
+</script>
+<script>
+  let devToolsOpen = false;
+  const threshold = 160;
+  setInterval(() => {
+    if (window.outerWidth - window.innerWidth > threshold || 
+        window.outerHeight - window.innerHeight > threshold) {
+      if (!devToolsOpen) {
+        devToolsOpen = true;
+        alert('Developer tools detected! Please close them.');
+        // Optionally redirect: window.location.href = 'about:blank';
+      }
+    } else {
+      devToolsOpen = false;
+    }
+  }, 1000);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'F12' || 
+        (e.ctrlKey && e.shiftKey && ['I', 'C', 'J'].includes(e.key)) ||
+        (e.ctrlKey && e.key === 'U')) {
+      e.preventDefault();
+      alert('Access to developer tools is restricted.');
+    }
+  });
+</script>
 </body>
 </html>

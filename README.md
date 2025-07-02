@@ -552,25 +552,10 @@
                 0 0 0 3px rgba(239, 68, 68, 0.5);
         }
 
-        .workink-btn {
-            background: linear-gradient(135deg, #06b6d4, #0891b2, #0e7490);
-            color: white;
-            box-shadow: 
-                0 15px 35px rgba(6, 182, 212, 0.5),
-                0 0 0 2px rgba(6, 182, 212, 0.3);
-            animation: workinkPulse 4.5s ease-in-out infinite;
-        }
 
-        @keyframes workinkPulse {
-            0%, 100% { box-shadow: 0 15px 35px rgba(6, 182, 212, 0.5), 0 0 0 2px rgba(6, 182, 212, 0.3); }
-            50% { box-shadow: 0 20px 45px rgba(6, 182, 212, 0.7), 0 0 0 3px rgba(6, 182, 212, 0.5); }
-        }
 
-        .workink-btn:hover {
-            box-shadow: 
-                0 25px 50px rgba(6, 182, 212, 0.8),
-                0 0 0 3px rgba(6, 182, 212, 0.5);
-        }
+
+
 
         .section-title {
             color: #e2e8f0;
@@ -758,9 +743,7 @@
                 <a href="https://link-center.net/1091169/vZ0nqAWy9tn2" target="_blank" class="btn method-btn linkvertise-btn">
                     Linkvertise
                 </a>
-                <a href="https://workink.net/20Fk/va4ajr2d" target="_blank" class="btn method-btn workink-btn">
-                    Workink
-                </a>
+
             </div>
         </div>
 

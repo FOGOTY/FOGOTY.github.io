@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -552,10 +552,25 @@
                 0 0 0 3px rgba(239, 68, 68, 0.5);
         }
 
+        .lootlabs-btn {
+            background: linear-gradient(135deg, #f59e0b, #d97706, #b45309);
+            color: white;
+            box-shadow: 
+                0 15px 35px rgba(245, 158, 11, 0.5),
+                0 0 0 2px rgba(245, 158, 11, 0.3);
+            animation: lootlabsPulse 4s ease-in-out infinite;
+        }
 
+        @keyframes lootlabsPulse {
+            0%, 100% { box-shadow: 0 15px 35px rgba(245, 158, 11, 0.5), 0 0 0 2px rgba(245, 158, 11, 0.3); }
+            50% { box-shadow: 0 20px 45px rgba(245, 158, 11, 0.7), 0 0 0 3px rgba(245, 158, 11, 0.5); }
+        }
 
-
-
+        .lootlabs-btn:hover {
+            box-shadow: 
+                0 25px 50px rgba(245, 158, 11, 0.8),
+                0 0 0 3px rgba(245, 158, 11, 0.5);
+        }
 
         .section-title {
             color: #e2e8f0;
@@ -729,9 +744,9 @@
 
         <div class="tab-content active" id="key-system">
             <div class="timer-section">
-                <div class="timer-label">⏰ Current key is valid</div>
+                <div class="timer-label">⏰ Current Time</div>
                 <div class="timer-display" id="timer">Loading...</div>
-                <div class="timezone-info">🌍 Times are in GMT+3 timezone</div>
+                <div class="timezone-info">🌍 Script Developer Timezone (GMT+3)</div>
             </div>
             
             <a href="https://discord.gg/aSSsMuBbu7" target="_blank" class="btn discord-btn">
@@ -740,10 +755,12 @@
             
             <div class="section-title">Get Your Key</div>
             <div class="key-methods">
-                <a href="https://link-center.net/1091169/vZ0nqAWy9tn2" target="_blank" class="btn method-btn linkvertise-btn">
+                <a href="https://ads.luarmor.net/get_key?for=FoggyHublinkvertise-OaLUvIhmUdMH" target="_blank" class="btn method-btn linkvertise-btn">
                     Linkvertise
                 </a>
-
+                <a href="https://ads.luarmor.net/get_key?for=FoggyHublootlabs-GGhOlgpVDLcy" target="_blank" class="btn method-btn lootlabs-btn">
+                    LootLabs
+                </a>
             </div>
         </div>
 
@@ -818,38 +835,12 @@
             const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
             const gmt3Time = new Date(utc + (3 * 3600000));
             
-            const currentHour = gmt3Time.getHours();
-            
-            let targetHour;
-            if (currentHour < 9) {
-                targetHour = 9;
-            } else if (currentHour < 21) {
-                targetHour = 21;
-            } else {
-                targetHour = 9 + 24;
-            }
-            
-            const target = new Date(gmt3Time);
-            if (targetHour >= 24) {
-                target.setDate(target.getDate() + 1);
-                target.setHours(targetHour - 24, 0, 0, 0);
-            } else {
-                target.setHours(targetHour, 0, 0, 0);
-            }
-            
-            const diff = target - gmt3Time;
-            
-            if (diff <= 0) {
-                updateTimer();
-                return;
-            }
-            
-            const hours = Math.floor(diff / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            const hours = gmt3Time.getHours().toString().padStart(2, '0');
+            const minutes = gmt3Time.getMinutes().toString().padStart(2, '0');
+            const seconds = gmt3Time.getSeconds().toString().padStart(2, '0');
             
             const timerDisplay = document.getElementById('timer');
-            timerDisplay.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            timerDisplay.textContent = `${hours}:${minutes}:${seconds}`;
         }
 
         function initTabs() {
@@ -860,15 +851,12 @@
                 tab.addEventListener('click', () => {
                     const targetTab = tab.dataset.tab;
                     
-                    // Remove active classes
                     tabs.forEach(t => t.classList.remove('active'));
                     contents.forEach(c => c.classList.remove('active'));
                     
-                    // Add active classes
                     tab.classList.add('active');
                     document.getElementById(targetTab).classList.add('active');
                     
-                    // Add click animation
                     tab.style.transform = 'translateY(-3px) scale(0.95)';
                     setTimeout(() => {
                         tab.style.transform = '';
@@ -937,7 +925,6 @@
         }
 
         function initHoverEffects() {
-            // Game tags hover effect
             document.querySelectorAll('.game-tag').forEach(tag => {
                 tag.addEventListener('mouseenter', function() {
                     this.style.background = 'linear-gradient(135deg, rgba(74, 222, 128, 0.25), rgba(59, 130, 246, 0.25))';
@@ -969,7 +956,6 @@
             });
         }
 
-        // Add ripple animation CSS
         const style = document.createElement('style');
         style.textContent = `
             @keyframes ripple {
@@ -981,7 +967,6 @@
         `;
         document.head.appendChild(style);
 
-        // Initialize everything
         document.addEventListener('DOMContentLoaded', () => {
             createParticles();
             initTabs();
@@ -992,7 +977,6 @@
             setInterval(updateTimer, 1000);
         });
 
-        // Enhanced mobile touch feedback
         if ('ontouchstart' in window) {
             document.querySelectorAll('.btn, .tab, .game-tag').forEach(el => {
                 el.addEventListener('touchstart', function() {

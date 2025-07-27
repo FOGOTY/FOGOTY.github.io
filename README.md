@@ -552,25 +552,9 @@
                 0 0 0 3px rgba(239, 68, 68, 0.5);
         }
 
-        .lootlabs-btn {
-            background: linear-gradient(135deg, #f59e0b, #d97706, #b45309);
-            color: white;
-            box-shadow: 
-                0 15px 35px rgba(245, 158, 11, 0.5),
-                0 0 0 2px rgba(245, 158, 11, 0.3);
-            animation: lootlabsPulse 4s ease-in-out infinite;
-        }
 
-        @keyframes lootlabsPulse {
-            0%, 100% { box-shadow: 0 15px 35px rgba(245, 158, 11, 0.5), 0 0 0 2px rgba(245, 158, 11, 0.3); }
-            50% { box-shadow: 0 20px 45px rgba(245, 158, 11, 0.7), 0 0 0 3px rgba(245, 158, 11, 0.5); }
-        }
 
-        .lootlabs-btn:hover {
-            box-shadow: 
-                0 25px 50px rgba(245, 158, 11, 0.8),
-                0 0 0 3px rgba(245, 158, 11, 0.5);
-        }
+
 
         .section-title {
             color: #e2e8f0;
@@ -758,9 +742,7 @@
                 <a href="https://ads.luarmor.net/get_key?for=FoggyHublinkvertise-OaLUvIhmUdMH" target="_blank" class="btn method-btn linkvertise-btn">
                     Linkvertise
                 </a>
-                <a href="https://ads.luarmor.net/get_key?for=FoggyHublootlabs-GGhOlgpVDLcy" target="_blank" class="btn method-btn lootlabs-btn">
-                    LootLabs
-                </a>
+
             </div>
         </div>
 

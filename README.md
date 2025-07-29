@@ -775,6 +775,9 @@
                         <div class="game-tag">Dead Rails</div>
                         <div class="game-tag">Slap Battles</div>
                         <div class="game-tag">Brookhaven</div>
+                        <div class="game-tag">99 Nights In The Forest</div>
+                        <div class="game-tag">Grow A Garden</div>
+                        <div class="game-tag">Steal A Brainrot</div>
                     </div>
                 </div>
 

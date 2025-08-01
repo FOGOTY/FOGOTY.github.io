@@ -258,10 +258,24 @@
             }
         }
 
+        .timer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .timer-box {
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 20px;
+            padding: 25px;
+            border: 2px solid rgba(74, 222, 128, 0.2);
+        }
+
         .timer-label {
             color: #e2e8f0;
-            font-size: 1.4rem;
-            margin-bottom: 20px;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
             font-weight: 700;
             animation: labelGlow 3s ease-in-out infinite alternate;
         }
@@ -272,7 +286,7 @@
         }
 
         .timer-display {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             font-weight: 900;
             background: linear-gradient(135deg, #4ade80, #22c55e, #16a34a);
             -webkit-background-clip: text;
@@ -281,7 +295,20 @@
             font-family: 'Courier New', monospace;
             animation: timerGlow 2s ease-in-out infinite alternate;
             filter: drop-shadow(0 0 25px rgba(74, 222, 128, 0.7));
-            margin: 20px 0;
+            margin: 15px 0;
+        }
+
+        .countdown-display {
+            font-size: 2.2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ef4444, #dc2626, #b91c1c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Courier New', monospace;
+            animation: countdownGlow 2s ease-in-out infinite alternate;
+            filter: drop-shadow(0 0 25px rgba(239, 68, 68, 0.7));
+            margin: 15px 0;
         }
 
         @keyframes timerGlow {
@@ -295,12 +322,38 @@
             }
         }
 
+        @keyframes countdownGlow {
+            from { 
+                filter: drop-shadow(0 0 25px rgba(239, 68, 68, 0.7));
+                transform: scale(1);
+            }
+            to { 
+                filter: drop-shadow(0 0 40px rgba(239, 68, 68, 1));
+                transform: scale(1.05);
+            }
+        }
+
+        .validity-info {
+            color: #fbbf24;
+            font-size: 1rem;
+            margin-top: 15px;
+            font-weight: 600;
+            animation: validityPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes validityPulse {
+            0%, 100% { text-shadow: 0 0 10px rgba(251, 191, 36, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(251, 191, 36, 0.8); }
+        }
+
         .timezone-info {
             color: #94a3b8;
             font-size: 1rem;
             margin-top: 20px;
             font-style: italic;
             animation: infoFade 4s ease-in-out infinite alternate;
+            grid-column: 1 / -1;
+            text-align: center;
         }
 
         @keyframes infoFade {
@@ -552,10 +605,6 @@
                 0 0 0 3px rgba(239, 68, 68, 0.5);
         }
 
-
-
-
-
         .section-title {
             color: #e2e8f0;
             font-size: 1.8rem;
@@ -628,8 +677,13 @@
                 margin-bottom: 30px;
             }
             
-            .timer-display {
-                font-size: 2.5rem;
+            .timer-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .timer-display, .countdown-display {
+                font-size: 2rem;
             }
             
             .timer-section {
@@ -691,8 +745,8 @@
                 font-size: 2.8rem;
             }
             
-            .timer-display {
-                font-size: 2rem;
+            .timer-display, .countdown-display {
+                font-size: 1.6rem;
             }
             
             .timer-section, .script-section {
@@ -728,9 +782,18 @@
 
         <div class="tab-content active" id="key-system">
             <div class="timer-section">
-                <div class="timer-label">⏰ Current Time</div>
-                <div class="timer-display" id="timer">Loading...</div>
-                <div class="timezone-info">🌍 Script Developer Timezone (GMT+3)</div>
+                <div class="timer-grid">
+                    <div class="timer-box">
+                        <div class="timer-label">⏰ Current Time</div>
+                        <div class="timer-display" id="current-timer">Loading...</div>
+                    </div>
+                    <div class="timer-box">
+                        <div class="timer-label">🔑 Key Valid Until</div>
+                        <div class="countdown-display" id="countdown-timer">Loading...</div>
+                        <div class="validity-info" id="validity-info">Calculating...</div>
+                    </div>
+                    <div class="timezone-info">🌍 Script Developer Timezone (GMT+3)</div>
+                </div>
             </div>
             
             <a href="https://discord.gg/aSSsMuBbu7" target="_blank" class="btn discord-btn">
@@ -739,10 +802,9 @@
             
             <div class="section-title">Get Your Key</div>
             <div class="key-methods">
-                <a href="https://ads.luarmor.net/get_key?for=FoggyHublinkvertise-OaLUvIhmUdMH" target="_blank" class="btn method-btn linkvertise-btn">
+                <a href="https://link-hub.net/1091169/imIkteK0Kk7p" target="_blank" class="btn method-btn linkvertise-btn">
                     Linkvertise
                 </a>
-
             </div>
         </div>
 
@@ -815,17 +877,66 @@
             }
         }
 
-        function updateTimer() {
+        function updateTimers() {
             const now = new Date();
             const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
             const gmt3Time = new Date(utc + (3 * 3600000));
             
+            // Current time display
             const hours = gmt3Time.getHours().toString().padStart(2, '0');
             const minutes = gmt3Time.getMinutes().toString().padStart(2, '0');
             const seconds = gmt3Time.getSeconds().toString().padStart(2, '0');
             
-            const timerDisplay = document.getElementById('timer');
-            timerDisplay.textContent = `${hours}:${minutes}:${seconds}`;
+            const currentTimerDisplay = document.getElementById('current-timer');
+            currentTimerDisplay.textContent = `${hours}:${minutes}:${seconds}`;
+            
+            // Key validity countdown
+            const currentHour = gmt3Time.getHours();
+            const currentMinute = gmt3Time.getMinutes();
+            const currentSecond = gmt3Time.getSeconds();
+            
+            let targetHour, nextValidityTime;
+            
+            // Determine next validity time (9:00 or 21:00)
+            if (currentHour < 9 || (currentHour === 9 && currentMinute === 0 && currentSecond === 0)) {
+                targetHour = 9;
+                nextValidityTime = new Date(gmt3Time);
+                nextValidityTime.setHours(9, 0, 0, 0);
+            } else if (currentHour < 21 || (currentHour === 21 && currentMinute === 0 && currentSecond === 0)) {
+                targetHour = 21;
+                nextValidityTime = new Date(gmt3Time);
+                nextValidityTime.setHours(21, 0, 0, 0);
+            } else {
+                // After 21:00, next validity is 9:00 tomorrow
+                targetHour = 9;
+                nextValidityTime = new Date(gmt3Time);
+                nextValidityTime.setDate(nextValidityTime.getDate() + 1);
+                nextValidityTime.setHours(9, 0, 0, 0);
+            }
+            
+            // Calculate time remaining
+            const timeRemaining = nextValidityTime.getTime() - gmt3Time.getTime();
+            
+            if (timeRemaining > 0) {
+                const hoursLeft = Math.floor(timeRemaining / (1000 * 60 * 60));
+                const minutesLeft = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                const secondsLeft = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+                
+                const countdownDisplay = document.getElementById('countdown-timer');
+                countdownDisplay.textContent = `${hoursLeft.toString().padStart(2, '0')}:${minutesLeft.toString().padStart(2, '0')}:${secondsLeft.toString().padStart(2, '0')}`;
+                
+                const validityInfo = document.getElementById('validity-info');
+                const nextTimeStr = targetHour === 9 ? '09:00' : '21:00';
+                const dayText = targetHour === 9 && currentHour >= 21 ? ' (Tomorrow)' : '';
+                validityInfo.textContent = `⏳ Until ${nextTimeStr} GMT+3${dayText}`;
+            } else {
+                // Exactly at validity time
+                const countdownDisplay = document.getElementById('countdown-timer');
+                countdownDisplay.textContent = '00:00:00';
+                
+                const validityInfo = document.getElementById('validity-info');
+                validityInfo.textContent = '✅ Key Valid Now!';
+            }
         }
 
         function initTabs() {
@@ -958,8 +1069,8 @@
             initRippleEffect();
             initHoverEffects();
             initScrollAnimations();
-            updateTimer();
-            setInterval(updateTimer, 1000);
+            updateTimers();
+            setInterval(updateTimers, 1000);
         });
 
         if ('ontouchstart' in window) {

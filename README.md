@@ -840,6 +840,7 @@
                         <div class="game-tag">99 Nights In The Forest</div>
                         <div class="game-tag">Grow A Garden</div>
                         <div class="game-tag">Steal A Brainrot</div>
+                        <div class="game-tag">Muscle Legends</div>
                     </div>
                 </div>
 

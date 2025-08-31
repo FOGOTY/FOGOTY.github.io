@@ -802,7 +802,7 @@
             
             <div class="section-title">Get Your Key</div>
             <div class="key-methods">
-                <a href="https://link-hub.net/1091169/imIkteK0Kk7p" target="_blank" class="btn method-btn linkvertise-btn">
+                <a href="https://link-center.net/1091169/trSHYoYzSvlI" target="_blank" class="btn method-btn linkvertise-btn">
                     Linkvertise
                 </a>
             </div>

@@ -555,7 +555,7 @@
 
                 <div class="warning-box">
                     <p class="warning-text">
-                        ⚠️ If your executor is not supported, check this:
+                        ⚠️ If it says game is not supported but it is in supported list, take script here:
                     </p>
                     <a href="https://raw.githubusercontent.com/FOGOTY/foggyhubdata/refs/heads/main/data" target="_blank" class="info-link">
                         https://raw.githubusercontent.com/FOGOTY/foggyhubdata/refs/heads/main/data

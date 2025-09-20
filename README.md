@@ -511,7 +511,7 @@
             <div class="section-title">Get Your Key</div>
             <div class="key-methods">
                 <a href="https://authguard.org/a/931" target="_blank" class="method-btn">
-                    Linkvertise
+                    Get Key Here
                 </a>
             </div>
         </div>

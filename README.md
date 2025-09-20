@@ -510,7 +510,7 @@
             
             <div class="section-title">Get Your Key</div>
             <div class="key-methods">
-                <a href="https://link-center.net/1091169/trSHYoYzSvlI" target="_blank" class="method-btn">
+                <a href="https://authguard.org/a/931" target="_blank" class="method-btn">
                     Linkvertise
                 </a>
             </div>

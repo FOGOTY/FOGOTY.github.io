@@ -13,11 +13,7 @@
 
         body {
             font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-            background: #0d1117;
-            background-image: 
-                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 128, 0, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(120, 119, 198, 0.2) 0%, transparent 50%);
+            background: #1a1a1a;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -25,125 +21,85 @@
             position: relative;
             overflow-x: hidden;
             padding: 20px;
-            color: #e6edf3;
-        }
-
-        .noise::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.02;
-            background: 
-                repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, #fff 0.1deg, transparent 0.2deg);
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .floating-shapes {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .shape {
-            position: absolute;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(120, 119, 198, 0.1), rgba(255, 128, 0, 0.05));
-            animation: float 20s infinite linear;
-        }
-
-        .shape:nth-child(2n) {
-            background: linear-gradient(135deg, rgba(255, 128, 0, 0.08), rgba(120, 119, 198, 0.05));
-            animation-duration: 25s;
-        }
-
-        .shape:nth-child(3n) {
-            background: linear-gradient(135deg, rgba(88, 166, 255, 0.06), transparent);
-            animation-duration: 30s;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+            color: #ffffff;
         }
 
         .container {
-            background: rgba(13, 17, 23, 0.95);
-            backdrop-filter: blur(20px);
+            background: #2a2a2a;
             border-radius: 16px;
-            border: 1px solid rgba(48, 54, 61, 0.8);
-            padding: 40px;
-            box-shadow: 
-                0 16px 70px rgba(0, 0, 0, 0.6),
-                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            border: 1px solid #3a3a3a;
+            padding: 32px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             max-width: 1000px;
             width: 100%;
             text-align: center;
             position: relative;
-            z-index: 2;
+            animation: containerEntry 0.6s ease-out;
+        }
+
+        @keyframes containerEntry {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .title {
-            font-size: 3.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #58a6ff 0%, #7877c6 50%, #ff8000 100%);
-            background-size: 200% 200%;
-            animation: gradientShift 3s ease infinite;
+            font-size: 2.8rem;
+            font-weight: 900; /* Made bolder */
+            margin-bottom: 32px;
+            letter-spacing: -0.02em;
+            background: linear-gradient(90deg, #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ffff, #0080ff, #0000ff, #8000ff, #ff00ff, #ff0080, #ff0000);
+            background-size: 200% auto;
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 40px;
-            letter-spacing: -0.02em;
+            animation: gradientShift 8s linear infinite;
         }
 
         @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
         }
 
         .tabs {
             display: flex;
-            margin-bottom: 32px;
-            background: rgba(33, 38, 45, 0.8);
+            margin-bottom: 24px;
+            background: #1e1e1e;
             border-radius: 12px;
-            padding: 6px;
-            gap: 6px;
-            border: 1px solid rgba(48, 54, 61, 0.5);
+            padding: 4px;
+            gap: 4px;
+            border: 1px solid #3a3a3a;
         }
 
         .tab {
             flex: 1;
-            padding: 14px 24px;
-            background: transparent;
+            padding: 12px 20px;
+            background: #000000;
             border: none;
-            border-radius: 8px;
-            color: #7d8590;
-            font-weight: 600;
-            font-size: 0.95rem;
+            border-radius: 10px;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 0.9rem;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             position: relative;
         }
 
         .tab.active {
-            background: linear-gradient(135deg, rgba(88, 166, 255, 0.15), rgba(120, 119, 198, 0.15));
-            color: #e6edf3;
-            border: 1px solid rgba(88, 166, 255, 0.3);
+            background: #ffffff;
+            color: #000000;
+            font-weight: 700;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
         }
 
         .tab:hover:not(.active) {
-            color: #e6edf3;
-            background: rgba(48, 54, 61, 0.5);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+            transform: translateY(-2px);
         }
 
         .tab-content {
@@ -160,185 +116,149 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .timer-section {
-            background: rgba(33, 38, 45, 0.6);
+        .current-time-section {
+            background: #1e1e1e;
             border-radius: 12px;
-            padding: 32px;
-            margin-bottom: 32px;
-            border: 1px solid rgba(48, 54, 61, 0.5);
+            padding: 24px;
+            margin-bottom: 24px;
+            border: 1px solid #3a3a3a;
         }
 
-        .timer-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin-bottom: 16px;
-        }
-
-        .timer-box {
-            background: rgba(21, 26, 32, 0.8);
-            border-radius: 10px;
-            padding: 20px;
-            border: 1px solid rgba(48, 54, 61, 0.4);
-        }
-
-        .timer-label {
-            color: #7d8590;
+        .time-label {
+            color: #9ca3af;
             font-size: 0.9rem;
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-
-        .timer-display {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #58a6ff;
-            font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
-            margin: 10px 0;
-        }
-
-        .countdown-display {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #ff7b72;
-            font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
-            margin: 10px 0;
-        }
-
-        .validity-info {
-            color: #f0883e;
-            font-size: 0.85rem;
-            margin-top: 12px;
+            margin-bottom: 8px;
             font-weight: 500;
         }
 
+        .time-display {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #ffffff;
+            font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+            margin: 8px 0;
+        }
+
         .timezone-info {
-            color: #7d8590;
-            font-size: 0.85rem;
-            margin-top: 16px;
-            grid-column: 1 / -1;
-            text-align: center;
+            color: #6b7280;
+            font-size: 0.8rem;
+            margin-top: 12px;
             font-style: italic;
         }
 
         .discord-btn {
-            background: linear-gradient(135deg, #5865f2 0%, #4752c4 100%);
+            background: #000000;
             border: none;
-            border-radius: 10px;
-            padding: 16px 32px;
+            border-radius: 12px;
+            padding: 16px 24px;
             color: white;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             cursor: pointer;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            transition: all 0.2s ease;
-            margin-bottom: 32px;
-            box-shadow: 0 4px 12px rgba(88, 101, 242, 0.3);
+            transition: all 0.3s ease;
+            margin-bottom: 24px;
         }
 
         .discord-btn:hover {
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(88, 101, 242, 0.4);
         }
 
         .section-title {
-            color: #e6edf3;
-            font-size: 1.4rem;
-            margin: 32px 0 20px 0;
-            font-weight: 700;
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin: 24px 0 16px 0;
+            font-weight: 600;
         }
 
         .key-methods {
             display: flex;
-            gap: 16px;
-            margin-top: 24px;
+            gap: 12px;
+            margin-top: 16px;
         }
 
         .method-btn {
             flex: 1;
-            padding: 16px 24px;
-            font-size: 1rem;
-            background: linear-gradient(135deg, #da3633 0%, #c5282a 100%);
+            padding: 14px 20px;
+            font-size: 0.95rem;
+            background: #000000;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             color: white;
             font-weight: 600;
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 12px rgba(218, 54, 51, 0.3);
+            transition: all 0.3s ease;
         }
 
         .method-btn:hover {
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(218, 54, 51, 0.4);
         }
 
         .script-section {
-            background: rgba(33, 38, 45, 0.6);
+            background: #1e1e1e;
             border-radius: 12px;
-            padding: 32px;
-            margin-bottom: 24px;
-            border: 1px solid rgba(48, 54, 61, 0.5);
+            padding: 24px;
+            margin-bottom: 20px;
+            border: 1px solid #3a3a3a;
         }
 
         .script-title {
-            color: #e6edf3;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 20px;
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .code-block {
-            background: rgba(21, 26, 32, 0.9);
-            border: 1px solid rgba(48, 54, 61, 0.6);
+            background: #111111;
+            border: 1px solid #3a3a3a;
             border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
+            padding: 16px;
+            margin: 16px 0;
             font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
-            font-size: 0.9rem;
-            color: #58a6ff;
+            font-size: 0.85rem;
+            color: #e5e5e5;
             word-break: break-all;
             position: relative;
         }
 
         .copy-btn {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: rgba(88, 166, 255, 0.15);
-            border: 1px solid rgba(88, 166, 255, 0.3);
+            background: #000000;
+            border: 1px solid #ffffff;
             border-radius: 6px;
-            padding: 8px 12px;
-            color: #58a6ff;
-            font-size: 0.8rem;
+            padding: 6px 12px;
+            color: #ffffff;
+            font-size: 0.75rem;
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
         }
 
         .copy-btn:hover {
-            background: rgba(88, 166, 255, 0.25);
-            border-color: rgba(88, 166, 255, 0.5);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+            transform: translateY(-2px);
         }
 
         .supported-games {
             text-align: left;
-            margin-top: 24px;
+            margin-top: 20px;
         }
 
         .supported-games h4 {
-            color: #e6edf3;
+            color: #ffffff;
             margin-bottom: 16px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             text-align: center;
         }
@@ -346,82 +266,236 @@
         .games-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 12px;
+            gap: 8px;
         }
 
         .game-tag {
-            background: rgba(33, 38, 45, 0.8);
-            border: 1px solid rgba(48, 54, 61, 0.6);
+            background: #000000;
+            border: 1px solid #3a3a3a;
             border-radius: 8px;
             padding: 10px 14px;
-            color: #7d8590;
-            font-size: 0.85rem;
+            color: #ffffff;
+            font-size: 0.8rem;
             font-weight: 500;
             text-align: center;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             cursor: pointer;
         }
 
         .game-tag:hover {
-            background: rgba(48, 54, 61, 0.8);
-            border-color: rgba(88, 166, 255, 0.3);
-            color: #e6edf3;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
             transform: translateY(-2px);
         }
 
         .warning-box {
-            margin-top: 24px;
-            padding: 20px;
-            background: rgba(218, 54, 51, 0.1);
-            border: 1px solid rgba(218, 54, 51, 0.3);
+            margin-top: 20px;
+            padding: 16px;
+            background: #2d1b1b;
+            border: 1px solid #5b2c2c;
             border-radius: 8px;
         }
 
         .warning-text {
-            color: #ff7b72;
-            font-size: 0.9rem;
-            margin-bottom: 12px;
+            color: #ef4444;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
             font-weight: 500;
         }
 
         .info-link {
-            color: #58a6ff;
+            color: #60a5fa;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.2s ease;
         }
 
         .info-link:hover {
-            color: #79c0ff;
+            color: #93c5fd;
+        }
+
+        /* Toggle switches like in the images */
+        .toggle-section {
+            background: #1e1e1e;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+            border: 1px solid #3a3a3a;
+        }
+
+        .toggle-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #3a3a3a;
+        }
+
+        .toggle-item:last-child {
+            border-bottom: none;
+        }
+
+        .toggle-label {
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 44px;
+            height: 24px;
+            background: #000000;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid #ffffff;
+        }
+
+        .toggle-switch::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background: #ffffff;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-switch.active {
+            background: #ffffff;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+
+        .toggle-switch.active::before {
+            background: #000000;
+            transform: translateX(20px);
+        }
+
+        .toggle-switch:hover {
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+
+        /* Executors section styles */
+        .executors-section {
+            background: #1e1e1e;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            border: 1px solid #3a3a3a;
+        }
+
+        .executor-category {
+            margin-bottom: 30px;
+        }
+
+        .executor-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .category-title {
+            color: #ffffff;
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .executor-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 12px;
+        }
+
+        .executor-item {
+            background: #000000;
+            border: 1px solid #3a3a3a;
+            border-radius: 10px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .executor-item:hover {
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .executor-name {
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .executor-price {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-left: auto;
+        }
+
+        .price-free {
+            background: #16a34a;
+            color: white;
+        }
+
+        .price-paid {
+            background: #9333ea;
+            color: white;
+        }
+
+        .executor-download {
+            background: #000000;
+            border: 1px solid #ffffff;
+            border-radius: 8px;
+            padding: 10px 16px;
+            color: #ffffff;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+
+        .executor-download:hover {
+            background: #ffffff;
+            color: #000000;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
         }
 
         @media (max-width: 768px) {
             .container {
                 padding: 24px;
-                margin: 10px;
+                margin: 15px;
             }
             
             .title {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
                 margin-bottom: 24px;
             }
             
-            .timer-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-            
-            .timer-display, .countdown-display {
+            .time-display {
                 font-size: 1.6rem;
             }
             
-            .timer-section, .script-section {
-                padding: 20px;
+            .current-time-section, .script-section, .executors-section, .toggle-section {
+                padding: 16px;
             }
             
             .key-methods {
                 flex-direction: column;
-                gap: 12px;
+                gap: 8px;
             }
 
             .tabs {
@@ -431,12 +505,11 @@
 
             .tab {
                 padding: 12px 16px;
-                font-size: 0.9rem;
             }
 
             .games-grid {
                 grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                gap: 8px;
+                gap: 6px;
             }
 
             .copy-btn {
@@ -447,24 +520,24 @@
                 display: block;
                 width: 100%;
             }
+
+            .executor-list {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 480px) {
             .container {
-                padding: 16px;
-                margin: 5px;
+                padding: 20px;
+                margin: 10px;
             }
             
             .title {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
-            .timer-display, .countdown-display {
+            .time-display {
                 font-size: 1.4rem;
-            }
-            
-            .timer-section, .script-section {
-                padding: 16px;
             }
             
             .games-grid {
@@ -473,9 +546,7 @@
         }
     </style>
 </head>
-<body class="noise">
-    <div class="floating-shapes"></div>
-    
+<body>
     <div class="container">
         <h1 class="title">FoggyHub</h1>
         
@@ -486,22 +557,16 @@
             <button class="tab" data-tab="main-script">
                 <span>📜 Main Script</span>
             </button>
+            <button class="tab" data-tab="executors">
+                <span>⚙️ Executors</span>
+            </button>
         </div>
 
         <div class="tab-content active" id="key-system">
-            <div class="timer-section">
-                <div class="timer-grid">
-                    <div class="timer-box">
-                        <div class="timer-label">⏰ Current Time</div>
-                        <div class="timer-display" id="current-timer">Loading...</div>
-                    </div>
-                    <div class="timer-box">
-                        <div class="timer-label">🔑 Key Valid Until</div>
-                        <div class="countdown-display" id="countdown-timer">Loading...</div>
-                        <div class="validity-info" id="validity-info">Calculating...</div>
-                    </div>
-                    <div class="timezone-info">🌍 Script Developer Timezone (GMT+3)</div>
-                </div>
+            <div class="current-time-section">
+                <div class="time-label">⏰ Current Time</div>
+                <div class="time-display" id="current-timer">Loading...</div>
+                <div class="timezone-info">🌍 Script Developer Timezone (GMT+3)</div>
             </div>
             
             <a href="https://discord.gg/aSSsMuBbu7" target="_blank" class="discord-btn">
@@ -563,90 +628,135 @@
                 </div>
             </div>
         </div>
+
+        <div class="tab-content" id="executors">
+            <div class="executors-section">
+                <div class="executor-category">
+                    <h3 class="category-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pc-case"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M15 14h.01"/><path d="M9 6h6"/><path d="M9 10h6"/></svg>
+                        PC Executors
+                    </h3>
+                    
+                    <h4 class="section-title">Free</h4>
+                    <div class="executor-list">
+                        <div class="executor-item">
+                            <div class="executor-name">
+                                Swift
+                                <span class="executor-price price-free">FREE</span>
+                            </div>
+                            <a href="https://getswift.vip/" target="_blank" class="executor-download">Download</a>
+                        </div>
+                        
+                        <div class="executor-item">
+                            <div class="executor-name">
+                                Velocity
+                                <span class="executor-price price-free">FREE</span>
+                            </div>
+                            <a href="https://getvelocity.lol/" target="_blank" class="executor-download">Download</a>
+                        </div>
+                        
+                        <div class="executor-item">
+                            <div class="executor-name">
+                                Valex
+                                <span class="executor-price price-free">FREE</span>
+                            </div>
+                            <a href="https://www.valex.io/" target="_blank" class="executor-download">Download</a>
+                        </div>
+                        
+                        <div class="executor-item">
+                            <div class="executor-name">
+                                Bunni
+                                <span class="executor-price price-free">FREE</span>
+                            </div>
+                            <a href="https://discord.gg/PNKAqSeFsM" target="_blank" class="executor-download">Join Discord</a>
+                        </div>
+                    </div>
+                    
+                    <h4 class="section-title">Paid</h4>
+                    <div class="executor-list">
+                        <div class="executor-item">
+                            <div class="executor-name">
+                                Wave
+                                <span class="executor-price price-paid">PAID</span>
+                            </div>
+                            <a href="https://getwave.gg/" target="_blank" class="executor-download">Download</a>
+                        </div>
+                        
+                        <div class="executor-item">
+                            <div class="executor-name">
+                                Zenith
+                                <span class="executor-price price-paid">PAID</span>
+                            </div>
+                            <a href="https://zenith.win/" target="_blank" class="executor-download">Download</a>
+                        </div>
+                        
+                        <div class="executor-item">
+                            <div class="executor-name">
+                                Potassium
+                                <span class="executor-price price-paid">PAID</span>
+                            </div>
+                            <a href="https://discord.gg/2Ner6qHYMT" target="_blank" class="executor-download">Join Discord</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="executor-category">
+                    <h3 class="category-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-smartphone"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+                        Mobile Executors
+                    </h3>
+                    
+                    <h4 class="section-title">Free</h4>
+                    <div class="executor-list">
+                        <div class="executor-item">
+                            <div class="executor-name">
+                                Krnl
+                                <span class="executor-price price-free">FREE</span>
+                            </div>
+                            <a href="https://krnl.cat/" target="_blank" class="executor-download">Download</a>
+                        </div>
+                        
+                        <div class="executor-item">
+                            <div class="executor-name">
+                                Cryptic
+                                <span class="executor-price price-free">FREE</span>
+                            </div>
+                            <a href="https://getcryptic.net/" target="_blank" class="executor-download">Download</a>
+                        </div>
+                        
+                        <div class="executor-item">
+                            <div class="executor-name">
+                                Arceus
+                                <span class="executor-price price-free">FREE</span>
+                            </div>
+                            <a href="https://spdmteam.com/" target="_blank" class="executor-download">Download</a>
+                        </div>
+                        
+                        <div class="executor-item">
+                            <div class="executor-name">
+                                Delta
+                                <span class="executor-price price-free">FREE</span>
+                            </div>
+                            <a href="https://deltaexploits.gg/" target="_blank" class="executor-download">Download</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
-        function createFloatingShapes() {
-            const container = document.querySelector('.floating-shapes');
-            
-            for (let i = 0; i < 20; i++) {
-                const shape = document.createElement('div');
-                shape.className = 'shape';
-                
-                const size = Math.random() * 80 + 20;
-                const left = Math.random() * 100;
-                const delay = Math.random() * 20;
-                
-                shape.style.width = size + 'px';
-                shape.style.height = size + 'px';
-                shape.style.left = left + '%';
-                shape.style.animationDelay = -delay + 's';
-                shape.style.animationDuration = (15 + Math.random() * 15) + 's';
-                
-                container.appendChild(shape);
-            }
-        }
-
-        function updateTimers() {
+        function updateCurrentTime() {
             const now = new Date();
             const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
             const gmt3Time = new Date(utc + (3 * 3600000));
             
-            // Current time display
             const hours = gmt3Time.getHours().toString().padStart(2, '0');
             const minutes = gmt3Time.getMinutes().toString().padStart(2, '0');
             const seconds = gmt3Time.getSeconds().toString().padStart(2, '0');
             
             const currentTimerDisplay = document.getElementById('current-timer');
             currentTimerDisplay.textContent = `${hours}:${minutes}:${seconds}`;
-            
-            // Key validity countdown
-            const currentHour = gmt3Time.getHours();
-            const currentMinute = gmt3Time.getMinutes();
-            const currentSecond = gmt3Time.getSeconds();
-            
-            let targetHour, nextValidityTime;
-            
-            // Determine next validity time (9:00 or 21:00)
-            if (currentHour < 9 || (currentHour === 9 && currentMinute === 0 && currentSecond === 0)) {
-                targetHour = 9;
-                nextValidityTime = new Date(gmt3Time);
-                nextValidityTime.setHours(9, 0, 0, 0);
-            } else if (currentHour < 21 || (currentHour === 21 && currentMinute === 0 && currentSecond === 0)) {
-                targetHour = 21;
-                nextValidityTime = new Date(gmt3Time);
-                nextValidityTime.setHours(21, 0, 0, 0);
-            } else {
-                // After 21:00, next validity is 9:00 tomorrow
-                targetHour = 9;
-                nextValidityTime = new Date(gmt3Time);
-                nextValidityTime.setDate(nextValidityTime.getDate() + 1);
-                nextValidityTime.setHours(9, 0, 0, 0);
-            }
-            
-            // Calculate time remaining
-            const timeRemaining = nextValidityTime.getTime() - gmt3Time.getTime();
-            
-            if (timeRemaining > 0) {
-                const hoursLeft = Math.floor(timeRemaining / (1000 * 60 * 60));
-                const minutesLeft = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-                const secondsLeft = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-                
-                const countdownDisplay = document.getElementById('countdown-timer');
-                countdownDisplay.textContent = `${hoursLeft.toString().padStart(2, '0')}:${minutesLeft.toString().padStart(2, '0')}:${secondsLeft.toString().padStart(2, '0')}`;
-                
-                const validityInfo = document.getElementById('validity-info');
-                const nextTimeStr = targetHour === 9 ? '09:00' : '21:00';
-                const dayText = targetHour === 9 && currentHour >= 21 ? ' (Tomorrow)' : '';
-                validityInfo.textContent = `⏳ Until ${nextTimeStr} GMT+3${dayText}`;
-            } else {
-                // Exactly at validity time
-                const countdownDisplay = document.getElementById('countdown-timer');
-                countdownDisplay.textContent = '00:00:00';
-                
-                const validityInfo = document.getElementById('validity-info');
-                validityInfo.textContent = '✅ Key Valid Now!';
-            }
         }
 
         function initTabs() {
@@ -672,33 +782,48 @@
                 const copyBtn = document.querySelector('.copy-btn');
                 const originalText = copyBtn.textContent;
                 copyBtn.textContent = '✅ Copied!';
-                copyBtn.style.background = 'rgba(46, 160, 67, 0.25)';
+                copyBtn.style.background = '#000000';
+                copyBtn.style.boxShadow = '0 0 10px rgba(0, 255, 0, 0.7)';
                 
                 setTimeout(() => {
                     copyBtn.textContent = originalText;
                     copyBtn.style.background = '';
+                    copyBtn.style.boxShadow = '';
                 }, 2000);
             }).catch(() => {
                 const copyBtn = document.querySelector('.copy-btn');
                 const originalText = copyBtn.textContent;
                 copyBtn.textContent = '❌ Failed';
-                copyBtn.style.background = 'rgba(218, 54, 51, 0.25)';
+                copyBtn.style.background = '#000000';
+                copyBtn.style.boxShadow = '0 0 10px rgba(255, 0, 0, 0.7)';
                 
                 setTimeout(() => {
                     copyBtn.textContent = originalText;
                     copyBtn.style.background = '';
+                    copyBtn.style.boxShadow = '';
                 }, 2000);
             });
         }
 
+        // Initialize toggle switches
+        function initToggles() {
+            const toggles = document.querySelectorAll('.toggle-switch');
+            
+            toggles.forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    toggle.classList.toggle('active');
+                });
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
-            createFloatingShapes();
             initTabs();
-            updateTimers();
-            setInterval(updateTimers, 1000);
+            initToggles();
+            updateCurrentTime();
+            setInterval(updateCurrentTime, 1000);
         });
 
-        // Keep the security features from original
+        // Security features
         document.addEventListener('contextmenu', event => event.preventDefault());
         
         let devToolsOpen = false;

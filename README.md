@@ -615,6 +615,7 @@
                         <div class="game-tag">Steal A Brainrot</div>
                         <div class="game-tag">Muscle Legends</div>
                         <div class="game-tag">Restaurant Tycoon 3</div>
+                        <div class="game-tag">Plants VS Brainrot</div>
                     </div>
                 </div>
 

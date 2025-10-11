@@ -8,13 +8,13 @@
 
   <script>
     // Edit the target URL here
-    const target = "https://foggy-softworks.vercel.app/";
+    const target = "https://foggysoftworks.xyz/";
 
     window.location.replace(target);
   </script>
 </head>
 <body>
 
-  <p>If you are not redirected automatically, <a href="https://foggy-softworks.vercel.app/">click here</a>.</p>
+  <p>If you are not redirected automatically, <a href="https://foggysoftworks.xyz/">click here</a>.</p>
 </body>
 </html>

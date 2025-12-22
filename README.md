@@ -8,7 +8,7 @@
 
   <script>
     // Edit the target URL here
-    const target = "https://foggysoftworks.xyz/";
+    const target = "https://foggysoftworks-mirror.vercel.app/"; //orig: https://foggysoftworks.xyz/
 
     window.location.replace(target);
   </script>
